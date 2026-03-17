@@ -1,10 +1,14 @@
 <template>
   <div>
-
+    <div v-for="item in data" :key="item.id">
+      {{ item }}
+    </div>
   </div>
 </template>
-
 <script setup>
+import { ref } from "vue";
+const data = ref([])
+
 async function getData() {
   const url = "https://data.cityofnewyork.us/resource/bmxf-3rd4.json";
   try {
@@ -23,5 +27,6 @@ async function getData() {
 </script>
 
 <style  scoped>
+
 
 </style>
