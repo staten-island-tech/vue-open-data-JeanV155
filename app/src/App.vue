@@ -10,6 +10,7 @@ import { ref } from "vue";
 const data = ref([])
 
 async function getData() {
+
   const url = "https://data.cityofnewyork.us/resource/bmxf-3rd4.json";
   try {
     const response = await fetch(url);
@@ -19,10 +20,14 @@ async function getData() {
 
     const result = await response.json();
     console.log(result);
+    data.value = result
+ 
   } catch (error) {
     console.error(error.message);
   }
-}
+} 
+
+getData()
 
 </script>
 
