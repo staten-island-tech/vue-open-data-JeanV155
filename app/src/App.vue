@@ -1,14 +1,12 @@
 <template>
   <div>
-    <div v-for="(item, index) in data" :key="index">
-      {{ item }}
-    </div>
+    <BarChart :shelters="data" />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
-
+import barchart from "./components/barchart.vue";
 
 const data = ref([]);
 
@@ -20,8 +18,6 @@ async function getData() {
     const result = await response.json();
 
     data.value = result;
-
-    console.log(data.value); 
   } catch (error) {
     console.error(error);
   }
@@ -31,8 +27,3 @@ onMounted(() => {
   getData();
 });
 </script>
-
-<style scoped>
-
-
-</style>
